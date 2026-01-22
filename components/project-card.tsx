@@ -38,8 +38,10 @@ export const allProjects: Project[] = [
     impact:
       "Educational case study explored how Spotify could lean into mixed-audio listening behaviors. Concept testing showed users found the experience more engaging and better suited for discovery than traditional playlists.",
     tags: ["Product Strategy", "User Research", "Discovery", "Concept Design"],
-    embedType: "video",
-    embedUrl: "/videos/mix-and-match.mov",
+    embedType: "figma",
+    embedUrl: 
+    "https://www.figma.com/embed?embed_host=share&url=" + 
+    encodeURIComponent("https://www.figma.com/proto/1CqSrlhdCmMCOn2x5uiMQm/spotify?node-id=20-4&t=SZe9NMUDJdWxktOw-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=20%3A4"),
     section: "spotify",
   },
 
@@ -61,7 +63,7 @@ export const allProjects: Project[] = [
       "Attracted 1.4K+ unique visitors and increased click-through rates on call-to-action buttons by 28%.",
     tags: ["Next.js", "React", "Tailwind CSS", "UX"],
     embedType: "website",
-    embedUrl: "https://www.apexconsultinggroup.org/",
+    embedUrl: "https://www.apexconsulting.org/",
     section: "frontend",
   },
 
@@ -81,8 +83,8 @@ export const allProjects: Project[] = [
     impact:
       "Reduced customer drop-off and bounce rates by making the shopping experience clearer and easier to complete.",
     tags: ["Shopify", "UX Design", "E-commerce", "Conversion"],
-    embedType: "video",
-    embedUrl: "/videos/foxeur.mov",
+    embedType: "website",
+    embedUrl: "https://foxeur.com/",
     section: "frontend",
   },
 
