@@ -28,7 +28,7 @@ export function ProjectPlayer({ project, onClose }: ProjectPlayerProps) {
           <div className="p-6 pb-4 flex flex-col sm:flex-row gap-6 bg-gradient-to-b from-secondary/30 to-transparent">
             <div className={`w-32 h-32 sm:w-40 sm:h-40 rounded-lg ${project.color} shrink-0 overflow-hidden shadow-xl`}>
               <img
-                src={project.image || "/placeholder.svg"}
+                src={project.coverImage || "/placeholder.svg"}
                 alt={project.title}
                 className="w-full h-full object-cover"
               />
@@ -58,55 +58,70 @@ export function ProjectPlayer({ project, onClose }: ProjectPlayerProps) {
             </div>
           </div>
 
-          {/* Demo Section */}
-          {project.embedUrl && (
-            <div className="px-6 pb-6">
-              <div className="flex items-center gap-2 mb-3">
-                <MonitorPlay className="w-5 h-5 text-primary" />
-                <h2 className="font-semibold text-foreground">
-                  {project.embedType === "video"
-                    ? "Demo Video"
-                    : project.embedType === "figma"
-                      ? "Figma Prototype"
-                      : "Live Website"}
-                </h2>
+{/* Demo Section */}
+    {(project.embedUrl || project.linkUrl) && (
+      <div className="px-6 pb-6">
+        <div className="flex items-center gap-2 mb-3">
+          <MonitorPlay className="w-5 h-5 text-primary" />
+          <h2 className="font-semibold text-foreground">
+            {project.embedType === "video"
+              ? "Demo Video"
+              : project.embedType === "figma"
+                ? "Figma Prototype"
+                : project.embedType === "image-link"
+                  ? "Preview"
+                  : "Live Website"}
+          </h2>
 
-                {project.embedType === "website" && (
-                  <a
-                    href={project.embedUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="ml-auto text-xs text-primary hover:underline flex items-center gap-1"
-                  >
-                    Open in new tab <ExternalLink className="w-3 h-3" />
-                  </a>
-                )}
-              </div>
-
-              <div className="w-full aspect-video rounded-lg overflow-hidden bg-black/50 border border-border">
-                {project.embedType === "video" ? (
-                  <video
-                    className="w-full h-full"
-                    controls
-                    playsInline
-                    preload="metadata"
-                  >
-                    {/* If you keep .mov, omit type or use video/quicktime.
-                        Strongly recommend converting to .mp4 (H.264) and using type="video/mp4". */}
-                    <source src={project.embedUrl} />
-                  </video>
-                ) : (
-                  <iframe
-                    src={project.embedUrl}
-                    className="w-full h-full"
-                    // This allow string is more “video platform” oriented; fine to keep.
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  />
-                )}
-              </div>
-            </div>
+          {(project.embedType === "website" || project.embedType === "image-link") && (project.embedUrl || project.linkUrl) && (
+            <a
+              href={project.embedUrl ?? project.linkUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ml-auto text-xs text-primary hover:underline flex items-center gap-1"
+            >
+              Open in new tab <ExternalLink className="w-3 h-3" />
+            </a>
           )}
+        </div>
+
+        {project.embedType === "image-link" ? (
+      <a
+        href={project.linkUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group relative block w-full overflow-hidden rounded-lg border border-border"
+      >
+        <img
+          src={project.previewImage || "/placeholder.svg"}
+          alt={`${project.title} preview`}
+          className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+        />
+
+        <div className="absolute inset-0 bg-black/0 transition-colors group-hover:bg-black/10 flex items-center justify-center">
+          <span className="opacity-0 transition-opacity group-hover:opacity-100 text-sm font-medium bg-background/90 px-3 py-1 rounded-full">
+            View live site →
+          </span>
+        </div>
+      </a>
+    ) : (
+      <div className="w-full aspect-video rounded-lg overflow-hidden bg-black/50 border border-border">
+        {project.embedType === "video" ? (
+          <video className="w-full h-full" controls playsInline preload="metadata">
+            <source src={project.embedUrl} />
+          </video>
+        ) : (
+          <iframe
+            src={project.embedUrl}
+            className="w-full h-full"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
+        )}
+      </div>
+    )}
+  </div>
+)}
 
           {/* Content Grid */}
           <div className="px-6 pb-6 grid grid-cols-1 md:grid-cols-2 gap-4">

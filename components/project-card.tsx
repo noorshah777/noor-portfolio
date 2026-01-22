@@ -7,7 +7,10 @@ export interface Project {
   id: string
   title: string
   subtitle: string
-  image: string
+
+  coverImage: string
+  previewImage?: string
+
   color: string
   duration?: string
   problem: string
@@ -15,10 +18,14 @@ export interface Project {
   solution: string
   impact: string
   tags: string[]
-  embedType?: "video" | "website" | "figma"
+
+  embedType?: "video" | "website" | "figma" | "image-link"
   embedUrl?: string
-  section?: "spotify" | "frontend" | "ux"
+  linkUrl?: string
+
+  section: string
 }
+
 
 export const allProjects: Project[] = [
   // Spotify projects
@@ -26,7 +33,7 @@ export const allProjects: Project[] = [
     id: "short-form-mixes",
     title: "Mix & Match",
     subtitle: "Short-form discovery inspired by mixed-audio trends",
-    image: "/images/mix-and-match.png",
+    coverImage: "/images/mix-and-match.png",
     color: "bg-gradient-to-br from-green-600 to-teal-800",
     duration: "1 week",
     problem:
@@ -50,7 +57,7 @@ export const allProjects: Project[] = [
     id: "apex-consulting",
     title: "APEX Consulting",
     subtitle: "Website redesign for a student consulting organization",
-    image: "/images/apex.png",
+    coverImage: "/images/apex.png",
     color: "bg-gradient-to-br from-blue-600 to-indigo-800",
     duration: "6 weeks",
     problem:
@@ -71,7 +78,8 @@ export const allProjects: Project[] = [
     id: "foxeur",
     title: "Foxeur",
     subtitle: "Shopify redesign for a candle brand",
-    image: "/images/foxeur.png",
+    coverImage: "/images/foxeur.png",
+    previewImage: "/images/foxeur-cover.png",
     color: "bg-gradient-to-br from-amber-500 to-orange-700",
     duration: "4 weeks",
     problem:
@@ -83,8 +91,8 @@ export const allProjects: Project[] = [
     impact:
       "Reduced customer drop-off and bounce rates by making the shopping experience clearer and easier to complete.",
     tags: ["Shopify", "UX Design", "E-commerce", "Conversion"],
-    embedType: "website",
-    embedUrl: "https://foxeur.com/",
+    embedType: "image-link",
+    linkUrl: "https://foxeur.com/",
     section: "frontend",
   },
 
@@ -92,7 +100,7 @@ export const allProjects: Project[] = [
     id: "product-motion",
     title: "Product Motion",
     subtitle: "Brand and website for a new product management club",
-    image: "/images/product-motion.png",
+    coverImage: "/images/product-motion.png",
     color: "bg-gradient-to-br from-cyan-500 to-blue-600",
     duration: "2 weeks",
     problem:
@@ -114,7 +122,7 @@ export const allProjects: Project[] = [
     id: "pip",
     title: "Carpool Connect",
     subtitle: "Carpool marketplace built for the 2025 Product Innovation Program",
-    image: "/images/carpool-connect.png",
+    coverImage: "/images/carpool-connect.png",
     color: "bg-gradient-to-br from-emerald-500 to-teal-600",
     duration: "12 weeks",
     problem:
@@ -137,7 +145,7 @@ export const allProjects: Project[] = [
     id: "elevate-empower",
     title: "Elevate & Empower",
     subtitle: "Functional health coaching platform",
-    image: "/images/elevate-and-empower.png",
+    coverImage: "/images/elevate-and-empower.png",
     color: "bg-gradient-to-br from-pink-500 to-rose-600",
     duration: "12 weeks",
     problem:
@@ -176,7 +184,7 @@ export function ProjectCard({ project, onClick }: ProjectCardProps) {
         <div
           className={`aspect-square rounded-md ${project.color} flex items-center justify-center overflow-hidden shadow-lg`}
         >
-          <img src={project.image || "/placeholder.svg"} alt={project.title} className="w-full h-full object-fit" />
+          <img src={project.coverImage || "/placeholder.svg"} alt={project.title} className="w-full h-full object-fit" />
         </div>
         <button
           className={`absolute bottom-2 right-2 w-12 h-12 rounded-full bg-primary flex items-center justify-center shadow-xl transition-all duration-300 ${
