@@ -8,9 +8,8 @@ const _inter = Inter({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "PM Portfolio | Spotify Style",
+  title: "Noor Shah - PM Portfolio",
   description: "Product Management Portfolio showcasing case studies, web development, and UX design projects",
-  generator: "v0.app",
 }
 
 export default function RootLayout({
