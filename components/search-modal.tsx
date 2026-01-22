@@ -156,7 +156,7 @@ export function SearchModal({ isOpen, onClose, onSelectProject }: SearchModalPro
                     className="w-full flex items-center gap-3 p-3 rounded-md hover:bg-secondary/50 transition-colors"
                   >
                     <div className={`w-12 h-12 rounded ${project.color} overflow-hidden shrink-0`}>
-                      <img src={project.image || "/placeholder.svg"} alt="" className="w-full h-full object-cover" />
+                      <img src={project.coverImage || "/placeholder.svg"} alt="" className="w-full h-full object-cover" />
                     </div>
                     <div className="flex-1 text-left">
                       <p className="font-medium text-foreground">{project.title}</p>
