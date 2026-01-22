@@ -137,7 +137,7 @@ export const allProjects: Project[] = [
     embedType: "figma",
     embedUrl: 
     "https://www.figma.com/embed?embed_host=share&url=" + 
-    encodeURIComponent("https://www.figma.com/design/vg1cm5Vdj9tjOohfqBpnql/personal-pip-wireframes?node-id=0-1&t=JBy2wla3uqJ4hirY-1"),
+    encodeURIComponent("https://www.figma.com/proto/vg1cm5Vdj9tjOohfqBpnql/personal-pip-wireframes?node-id=1-286&p=f&t=hb6bzgKpZgwFPHkK-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1"),
     section: "ux",
   },
 
@@ -160,7 +160,7 @@ export const allProjects: Project[] = [
 embedType: "figma",
 embedUrl:
   "https://www.figma.com/embed?embed_host=share&url=" +
-  encodeURIComponent("https://www.figma.com/design/HZ273H0VTARc4GAGQsdJ4E/elevate-and-empower?node-id=23-36&t=heFUVcsue1CVDh3s-1"),
+  encodeURIComponent("https://www.figma.com/proto/HZ273H0VTARc4GAGQsdJ4E/elevate-and-empower?t=X4WdpjAS3cpm9WBZ-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&node-id=23-36&starting-point-node-id=23%3A36"),
 section: "ux",
 },
 ];
