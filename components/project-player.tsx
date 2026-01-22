@@ -97,12 +97,6 @@ export function ProjectPlayer({ project, onClose }: ProjectPlayerProps) {
           alt={`${project.title} preview`}
           className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-[1.02]"
         />
-
-        <div className="absolute inset-0 bg-black/0 transition-colors group-hover:bg-black/10 flex items-center justify-center">
-          <span className="opacity-0 transition-opacity group-hover:opacity-100 text-sm font-medium bg-background/90 px-3 py-1 rounded-full">
-            View live site →
-          </span>
-        </div>
       </a>
     ) : (
       <div className="w-full aspect-video rounded-lg overflow-hidden bg-black/50 border border-border">
